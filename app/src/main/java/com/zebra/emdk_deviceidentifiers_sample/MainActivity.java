@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity  implements EMDKManager.EMDK
 
 
     //Assign the profile name used in EMDKConfig.xml
-    private String profileName = "WS50";
+    //private String profileName = "WS50";
+    private String profileName = "CLOCK42";
 
     //Declare a variable to store ProfileManager object
     private ProfileManager  profileManager = null;
