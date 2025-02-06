@@ -1,2 +1,2 @@
-include ':app'
+include ':EMDK.PROFILE',':EMDK.BARCODE'
 rootProject.name = "EMDK-EXERCISER-2024"
