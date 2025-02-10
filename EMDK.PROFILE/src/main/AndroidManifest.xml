@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <uses-library android:name="com.symbol.emdk" />
-        <activity android:name="com.zebra.emdk_barcode.MainActivity"
+        <activity android:name="com.zebra.emdk_deviceidentifiers_sample.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

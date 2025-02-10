@@ -28,7 +28,6 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
-import com.zebra.emdk2024.R;
 
 public class MainActivity extends AppCompatActivity  implements EMDKManager.EMDKListener {
 
