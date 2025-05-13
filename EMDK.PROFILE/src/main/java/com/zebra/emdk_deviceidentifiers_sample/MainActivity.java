@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.symbol.emdk.EMDKManager;
 import com.symbol.emdk.EMDKResults;
 import com.symbol.emdk.ProfileManager;
+import com.symbol.emdk.VersionManager;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -36,10 +37,12 @@ public class MainActivity extends AppCompatActivity  implements EMDKManager.EMDK
 
     //Assign the profile name used in EMDKConfig.xml
     //private String profileName = "WS50";
-    private String profileName = "fooFileMgr";
+    private String profileName = "CLOCK42";//worked smoothly on BSP 14-28-40, May13 2025
+//    private String profileName = "fooFileMgr"; // DOES NOT WORK ANYMORE THROUGH EMDK. FILE MANAGER IS ONLY SUPPORTED VIA STAGENOW
 
     //Declare a variable to store ProfileManager object
     private ProfileManager  profileManager = null;
+    private VersionManager versionManager = null;
 
     //Declare a variable to store EMDKManager object
     private EMDKManager emdkManager = null;
@@ -110,6 +113,17 @@ public class MainActivity extends AppCompatActivity  implements EMDKManager.EMDK
         //Get the ProfileManager object to process the profiles
         profileManager = (ProfileManager) emdkManager.getInstance(EMDKManager.FEATURE_TYPE.PROFILE);
         new ProcessProfileTask().execute("");
+
+        if(Build.MANUFACTURER.contains("Zebra")) {
+            Log.i(TAG, "This is a Zebra device");
+            versionManager = (VersionManager) emdkManager.getInstance(EMDKManager.FEATURE_TYPE.VERSION);
+            if (versionManager != null) {
+                String version = versionManager.getVersion(VersionManager.VERSION_TYPE.EMDK);
+                Log.i(TAG, "EMDK Version: " + version);
+            } else {
+                Log.e(TAG, "Failed to get EMDK Version");
+            }
+        }
     }
 
     @Override

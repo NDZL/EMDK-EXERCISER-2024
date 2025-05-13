@@ -2,10 +2,10 @@
 <project version="4">
   <component name="deploymentTargetSelector">
     <selectionStates>
-      <SelectionState runConfigName="EMDK.PROFILE">
+      <SelectionState runConfigName="EMDK.BARCODE">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="EMDK.BARCODE">
+      <SelectionState runConfigName="EMDK.PROFILE">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
