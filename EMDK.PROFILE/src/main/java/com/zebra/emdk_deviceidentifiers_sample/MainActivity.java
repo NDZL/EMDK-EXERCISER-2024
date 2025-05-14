@@ -4,20 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Base64;
 import android.util.Log;
 import android.util.Xml;
 import android.view.KeyEvent;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.symbol.emdk.EMDKManager;
 import com.symbol.emdk.EMDKResults;
@@ -28,7 +23,6 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.StringReader;
-import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity  implements EMDKManager.EMDKListener {
 
@@ -59,10 +53,17 @@ public class MainActivity extends AppCompatActivity  implements EMDKManager.EMDK
 
     private String mToken = "";
 
+    TextView tvFingerprint;
+    TextView tvEMDKVersion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        tvFingerprint = findViewById(R.id.txtFingerprint);
+        tvEMDKVersion = findViewById(R.id.txtEMDK);
+        tvFingerprint.setText(Build.FINGERPRINT);
 
 
         EMDKResults results = EMDKManager.getEMDKManager(getApplicationContext(), this);
@@ -71,6 +72,8 @@ public class MainActivity extends AppCompatActivity  implements EMDKManager.EMDK
         }else {
             //EMDKManager object creation failed
         }
+
+
 
 
     }
@@ -120,6 +123,7 @@ public class MainActivity extends AppCompatActivity  implements EMDKManager.EMDK
             if (versionManager != null) {
                 String version = versionManager.getVersion(VersionManager.VERSION_TYPE.EMDK);
                 Log.i(TAG, "EMDK Version: " + version);
+                tvEMDKVersion.setText(version);
             } else {
                 Log.e(TAG, "Failed to get EMDK Version");
             }
