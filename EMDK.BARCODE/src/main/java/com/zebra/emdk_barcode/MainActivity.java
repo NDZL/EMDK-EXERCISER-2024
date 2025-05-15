@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Xml;
 import android.view.KeyEvent;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.symbol.emdk.EMDKManager;
 import com.symbol.emdk.EMDKResults;
@@ -32,8 +34,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        TextView tvOut = findViewById(R.id.txtFingerprint);
+        TextView tvFinger = findViewById(R.id.txtBuildId);
+        tvFinger.setText(Build.FINGERPRINT);
 
-        new ZebraEMDKBarcode().createInstance(getApplicationContext());
+
+        new ZebraEMDKBarcode().createInstance(getApplicationContext(), tvOut);
 
     }
 
