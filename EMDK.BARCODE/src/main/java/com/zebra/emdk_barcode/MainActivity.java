@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView tvOut = findViewById(R.id.txtFingerprint);
         TextView tvFinger = findViewById(R.id.txtBuildId);
-        tvFinger.setText(Build.FINGERPRINT);
+        tvFinger.setText(Build.FINGERPRINT + " " + Build.getSerial()) ;
 
 
         new ZebraEMDKBarcode().createInstance(getApplicationContext(), tvOut);

@@ -19,3 +19,25 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Keep application entry points
+
+
+# Remove broad component keeps so class names can be obfuscated.
+
+# Flatten the package hierarchy
+-repackageclasses ''
+
+# Allow R8 to modify access levels for more optimization
+-allowaccessmodification
+
+# Reuse method names as much as possible
+-overloadaggressively
+
+# Allow unrelated class members to have the same obfuscated name
+-useuniqueclassmembernames
+
+# (Optional) Provide a dictionary for renaming classes and members
+#-obfuscationdictionary dictionary.txt
+#-classobfuscationdictionary dictionary.txt
+
